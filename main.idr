@@ -52,8 +52,6 @@ example3 = do
     d <- Just 1
     pure $ pure $ pure $ a + b + c + d
 
-%ambiguity_depth 5
-
 example4 : IO (List (Either String (Maybe Integer)))
 example4 = do
     a <- Just 1
