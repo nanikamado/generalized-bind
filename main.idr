@@ -19,7 +19,7 @@ GBind a a b where
     m >>= k = k m
 
 GJoin f c => Functor f => GBind a b c => GBind (f a) b c where
-    m >>= k = gjoin $ map (>>= k) m
+    m >>= k = gjoin $ (>>= k) <$> m
 
 infixl 1 ...
 (...) : a -> (a -> b) -> b
