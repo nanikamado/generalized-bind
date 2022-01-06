@@ -32,7 +32,7 @@ example1 = do
     b <- Right 2
             ... the (Either String Integer)
     c <- Just 3
-    pure $ pure $ a + b + c
+    pure . pure $ a + b + c
 
 example2 : Maybe (Either String Integer)
 example2 = do
@@ -41,7 +41,7 @@ example2 = do
     b <- Left "error"
             ... the (Either String Integer)
     c <- Just 3
-    pure $ pure $ a + b + c
+    pure . pure $ a + b + c
 
 example3 : List (Either String (Maybe Integer))
 example3 = do
@@ -50,7 +50,7 @@ example3 = do
             ... the (Either String Integer)
     c <- [0, 1, 2, 3]
     d <- Just 1
-    pure $ pure $ pure $ a + b + c + d
+    pure . pure . pure $ a + b + c + d
 
 example4 : IO (List (Either String (Maybe Integer)))
 example4 = do
@@ -60,7 +60,7 @@ example4 = do
             ... the (Either String Integer)
     c <- [0, 1, 2, 3]
     d <- Just 1
-    pure $ pure $ pure $ pure $ a + b + c + d
+    pure . pure . pure . pure $ a + b + c + d
 
 main : IO ()
 main = do
