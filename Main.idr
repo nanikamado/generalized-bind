@@ -1,5 +1,8 @@
 module Main
 
+import Control.Monad.State
+
+
 %hide (>>=)
 
 
@@ -61,6 +64,18 @@ example4 = do
     c <- [0, 1, 2, 3]
     d <- Just 1
     pure . pure . pure . pure $ a + b + c + d
+
+
+-- example5 : IO (State Integer ())
+-- example5 = do
+--     u <- put 1 ... the (State Integer ())
+--     pure $ the () u
+--     pure . pure $ ()
+
+-- Error: While processing right hand side of example5. Can't find an implementation
+-- for MultiStackBind (StateT Integer Identity ()) () (IO (State Integer ())).
+
+
 
 main : IO ()
 main = do
