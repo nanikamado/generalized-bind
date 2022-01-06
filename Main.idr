@@ -12,13 +12,13 @@ Monad m => GJoin m (m a) where
 Applicative m => Traversable t => GJoin t a => GJoin t (m a) where
     gjoin a = gjoin <$> sequence a
 
-interface GBind a b c where
+interface MultiStackBind a b c where
     (>>=) : a -> (b -> c) -> c
 
-GBind a a b where
+MultiStackBind a a b where
     m >>= k = k m
 
-GJoin f c => Functor f => GBind a b c => GBind (f a) b c where
+GJoin f c => Functor f => MultiStackBind a b c => MultiStackBind (f a) b c where
     m >>= k = gjoin $ (>>= k) <$> m
 
 infixl 1 ...
